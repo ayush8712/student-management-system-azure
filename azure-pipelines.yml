@@ -1,0 +1,66 @@
+# Azure DevOps Pipeline Configuration
+
+Alternative to GitHub Actions: Use this `azure-pipelines.yml` for Azure DevOps CI/CD.
+
+## Setup Instructions
+
+### Step 1: Create Azure DevOps Project
+
+1. Go to [dev.azure.com](https://dev.azure.com)
+2. Click "New project"
+3. Enter project name: `student-task-manager`
+4. Click "Create"
+
+### Step 2: Create Pipeline
+
+1. In your project, click "Pipelines"
+2. Click "Create Pipeline"
+3. Select "GitHub" (or where your code is hosted)
+4. Select your repository
+5. Click "Existing Azure Pipelines YAML"
+6. Select this file: `azure-pipelines.yml`
+7. Click "Continue"
+8. Click "Save and run"
+
+### Step 3: Configure Pipeline Variables
+
+1. Go to "Pipelines" → Your pipeline
+2. Click "Edit"
+3. Click "Variables"
+4. Add these variables:
+
+| Variable | Value |
+|----------|-------|
+| `azureSubscriptionId` | Your Azure subscription ID |
+| `resourceGroup` | `studentapp-rg` |
+| `appServiceName` | Your app service name |
+| `appServicePlan` | `studentapp-plan` |
+
+### Step 4: Set Up Service Connection
+
+1. Click "Project settings" (bottom-left)
+2. Click "Service connections"
+3. Click "New service connection"
+4. Select "Azure Resource Manager"
+5. Select "Service principal (automatic)"
+6. Choose subscription and resource group
+7. Name it: `AzureConnection`
+
+Now your pipeline will automatically deploy on every commit!
+
+## Pipeline Features
+
+✅ Build Node.js application
+✅ Run security scans
+✅ Deploy to App Service
+✅ Post-deployment verification
+
+## View Pipeline Status
+
+- **Successful run**: Green checkmark
+- **Failed run**: Red X (check logs)
+- **In progress**: Blue indicator
+
+---
+
+For GitHub Actions (simpler), see `GITHUB_ACTIONS_SETUP.md`
